@@ -2,6 +2,7 @@ package com.example.HospitalSurgery.model;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Surgery {
@@ -14,14 +15,17 @@ public class Surgery {
     @Enumerated
     @Column(name="Department")
     private SurgeryEnum Department;
+    private Set<Patient> patients;
 
     // no arg constructor
     public Surgery() {}
     // normal constructor
-    public Surgery(Long id, String name, SurgeryEnum department) {
+    public Surgery(Long id, String name, SurgeryEnum department, Set<Patient> patients) {
         this.id = id;
         this.name = name;
         Department = department;
+        this.patients = patients;
+
     }
 
         // Getters and Setters
@@ -48,4 +52,13 @@ public class Surgery {
     public void setDepartment(SurgeryEnum department) {
         Department = department;
     }
+
+    public Set<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(Set<Patient> patients) {
+        this.patients = patients;
+    }
 }
+
