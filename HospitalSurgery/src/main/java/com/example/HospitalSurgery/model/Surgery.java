@@ -16,19 +16,19 @@ public class Surgery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @Enumerated
-    @Column(name = "Department")
-    private SurgeryEnum Department;
+
+    private String Department;
     @JsonIgnoreProperties({"surgery"})
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "surgery", cascade = CascadeType.ALL)
     private List<Patient> patients;
 
     // no arg constructor
     public Surgery() {
     }
 
+
     // normal constructor
-    public Surgery(Long id, String name, SurgeryEnum department, Set<Patient> patients) {
+    public Surgery(Long id, String name, String department, Set<Patient> patients) {
         this.id = id;
         this.name = name;
         Department = department;
@@ -53,11 +53,11 @@ public class Surgery {
         this.name = name;
     }
 
-    public SurgeryEnum getDepartment() {
+    public String getDepartment() {
         return Department;
     }
 
-    public void setDepartment(SurgeryEnum department) {
+    public void setDepartment(String department) {
         Department = department;
     }
 
