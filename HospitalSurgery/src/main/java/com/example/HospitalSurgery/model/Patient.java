@@ -15,6 +15,7 @@ public class Patient {
     private String lastName;
     private int age;
 
+    @JsonIgnoreProperties("patients")
     @ManyToOne
 //    @JoinColumn(name = "surgery_id", nullable = false)
     private Surgery surgery; // list of surgeries that a patient is going to have
