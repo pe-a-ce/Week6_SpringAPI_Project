@@ -45,8 +45,9 @@ public class PatientController {
 
 
 //    DELETE
-//    @DeleteMapping("/patients/{id}")
-//    void delete(@PathVariable int id){
-//    patientRepository.delete();
-}
+    @DeleteMapping("/patients/{id}")
+    public void delete(@PathVariable Long id){
+    patientRepository.deleteById(id);
+
+}}
 
