@@ -1,6 +1,7 @@
 package com.example.HospitalSurgery.controller;
 
 import com.example.HospitalSurgery.model.Surgery;
+import com.example.HospitalSurgery.repository.SurgeryRepository;
 import com.example.HospitalSurgery.service.SurgeryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +13,12 @@ import java.util.List;
 public class SurgeryController {
 
     @Autowired
-    private SurgeryService surgeryService;
+    private SurgeryRepository surgeryRepository;
 
-    @GetMapping("/surgeries")
+    @GetMapping("/surgery") // listing all surgeries and the patients in each
     public List<Surgery> getAll(){
-        return SurgeryService.getAll();
+        return surgeryRepository.findAll();
     }
+
+    @GetMapping("/surgery")
 }
