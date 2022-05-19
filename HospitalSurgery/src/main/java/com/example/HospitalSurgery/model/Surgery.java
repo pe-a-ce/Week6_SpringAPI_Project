@@ -1,7 +1,11 @@
 package com.example.HospitalSurgery.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,22 +17,26 @@ public class Surgery {
     private Long id;
     private String name;
     @Enumerated
-    @Column(name="Department")
+    @Column(name = "Department")
     private SurgeryEnum Department;
-    private Set<Patient> patients;
+    @JsonIgnoreProperties({"surgery"})
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private List<Patient> patients;
 
     // no arg constructor
-    public Surgery() {}
+    public Surgery() {
+    }
+
     // normal constructor
     public Surgery(Long id, String name, SurgeryEnum department, Set<Patient> patients) {
         this.id = id;
         this.name = name;
         Department = department;
-        this.patients = patients;
+        this.patients = new ArrayList<Patient>();
 
     }
 
-        // Getters and Setters
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -53,12 +61,14 @@ public class Surgery {
         Department = department;
     }
 
-    public Set<Patient> getPatients() {
+    public List<Patient> getPatients() {
         return patients;
     }
 
-    public void setPatients(Set<Patient> patients) {
+    public void setPatients(List<Patient> patients) {
         this.patients = patients;
     }
 }
+
+
 

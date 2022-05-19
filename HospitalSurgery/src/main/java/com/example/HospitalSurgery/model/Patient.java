@@ -15,19 +15,22 @@ public class Patient {
     private String lastName;
     private int age;
 
-    @ManyToMany(mappedBy = "patients") // mapped by = name of the property in 'Patient' that's to be FK
-    @JsonIgnoreProperties(value = {"patients"})
-    private List<Surgery> surgeries; // list of surgeries that a patient is going to have
+    @ManyToOne
+//    @JsonIgnoreProperties(value = {"patients"})
+    private Surgery surgery; // list of surgeries that a patient is going to have
 
     public Patient() {} // no  arg constructor to satisfy Spring
 
+
+
     //normal constructors
-    public Patient(Long id, String firstName, String lastName, int age, List<Surgery> surgeries) {
+    public Patient(Long id, String firstName, String lastName, int age, Surgery surgery) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.surgeries = surgeries;
+        this.surgery = surgery;
+
     }
 
         // Getters and Setters
@@ -63,11 +66,11 @@ public class Patient {
         this.age = age;
     }
 
-    public List<Surgery> getSurgeries() {
-        return surgeries;
+    public Surgery getSurgery() {
+        return surgery;
     }
 
-    public void setSurgeries(List<Surgery> surgeries) {
-        this.surgeries = surgeries;
+    public void setSurgery(Surgery surgery) {
+        this.surgery = surgery;
     }
 }
