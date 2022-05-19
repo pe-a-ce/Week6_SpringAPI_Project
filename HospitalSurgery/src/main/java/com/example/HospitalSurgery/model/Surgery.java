@@ -16,8 +16,7 @@ public class Surgery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
-    private String Department;
+    private String department;
     @JsonIgnoreProperties({"surgery"})
     @OneToMany(mappedBy = "surgery", cascade = CascadeType.ALL)
     private List<Patient> patients;
@@ -28,13 +27,14 @@ public class Surgery {
 
 
     // normal constructor
-    public Surgery(Long id, String name, String department, Set<Patient> patients) {
-        this.id = id;
+    public Surgery( String name, String department) {
         this.name = name;
-        Department = department;
+        this.department = department;
         this.patients = new ArrayList<Patient>();
 
     }
+
+
 
     // Getters and Setters
     public Long getId() {
@@ -54,11 +54,11 @@ public class Surgery {
     }
 
     public String getDepartment() {
-        return Department;
+        return department;
     }
 
     public void setDepartment(String department) {
-        Department = department;
+        department = department;
     }
 
     public List<Patient> getPatients() {

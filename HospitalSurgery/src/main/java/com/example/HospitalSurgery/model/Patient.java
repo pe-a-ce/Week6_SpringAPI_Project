@@ -24,7 +24,7 @@ public class Patient {
 
 
     //normal constructors
-    public Patient(Long id, String firstName, String lastName, int age, Surgery surgery) {
+    public Patient( String firstName, String lastName, int age, Surgery surgery) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
