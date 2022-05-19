@@ -30,7 +30,7 @@ public class PatientController {
         return PatientService.getAll();
     }
 
-//    SHOW - patients by id
+//    INDEX - patients by id
     @GetMapping("/patients/{id}") // Get patients by id e.g. localhost:8080/patients
     public ResponseEntity<Optional<Patient>> getPatient(@PathVariable Long id){
         return new ResponseEntity<>(patientRepository.findById(id), HttpStatus.OK);
@@ -43,7 +43,10 @@ public class PatientController {
         return new ResponseEntity<>(newPatient, HttpStatus.CREATED);
     }
 
+
 //    DELETE
-
-
+//    @DeleteMapping("/patients/{id}")
+//    void delete(@PathVariable int id){
+//    patientRepository.delete();
 }
+

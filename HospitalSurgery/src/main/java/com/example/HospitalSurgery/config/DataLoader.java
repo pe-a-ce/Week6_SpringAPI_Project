@@ -34,7 +34,7 @@ public class DataLoader implements ApplicationRunner {
         Surgery s7 = new Surgery("Splenectomy", "Paediatrics");
 
 //patient data
-        Patient p1 = new Patient("Ralf", "Haddleston", 32, s5);
+        Patient p1 = new Patient("Ralf", "Addleston", 32, s5);
         Patient p2 = new Patient("Brigg", "Howien", 47, s2);
         Patient p3 = new Patient("Narali", "Stonham", 12, s7);
         Patient p4 = new Patient("Katie", "Plyn", 16, s5);
