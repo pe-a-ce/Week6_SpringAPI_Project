@@ -15,4 +15,9 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
+    @GetMapping("/patients")
+    public List<Patient> getAll() {
+        return PatientService.getAll();
+    }
+
 }
