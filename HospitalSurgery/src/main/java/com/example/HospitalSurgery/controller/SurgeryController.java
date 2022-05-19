@@ -6,9 +6,7 @@ import com.example.HospitalSurgery.service.SurgeryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +27,16 @@ public class SurgeryController {
         return new ResponseEntity<>(surgeryRepository.findById(id), HttpStatus.OK);
     }
 
-    
+    @PostMapping("/surgery")
+    public ResponseEntity<Surgery> createNewSurgery(@RequestBody Surgery surgery){
+        Surgery newSurgery = surgeryRepository.save(surgery);
+        return ResponseEntity
+                .ok()
+                .body(newSurgery);
+    }
 
+    @DeleteMapping("/surgery/{id}")
+    public void deleteSurgery(@PathVariable Long id){
+        surgeryRepository.deleteById(id);
+    }
 }
