@@ -26,7 +26,6 @@ public class PatientController {
 //    SHOW - GET MAPPING
     @GetMapping("/patients") // GET patients
     public List<Patient> getAll() {
-
         return patientRepository.findAll();
     }
 
