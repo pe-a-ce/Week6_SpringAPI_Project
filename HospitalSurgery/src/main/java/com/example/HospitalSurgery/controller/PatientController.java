@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +17,6 @@ import static com.example.HospitalSurgery.service.PatientService.patientReposito
 
 @RestController // indicates that the class is a controller, and that all the methods in the marked class will return a JSON response.
 public class PatientController {
-
-
 
     @Autowired // GLUE
      PatientRepository patientRepository;
@@ -27,7 +26,8 @@ public class PatientController {
 //    SHOW - GET MAPPING
     @GetMapping("/patients") // GET patients
     public List<Patient> getAll() {
-        return PatientService.getAll();
+
+        return patientRepository.findAll();
     }
 
 //    INDEX - patients by id
@@ -43,10 +43,11 @@ public class PatientController {
         return new ResponseEntity<>(newPatient, HttpStatus.CREATED);
     }
 
-//    DELETE
+//    DELETE a patient via id
     @DeleteMapping("/patients/{id}")
-    public void delete(@PathVariable Long id){
-    patientRepository.deleteById(id);
+    public void delete(@PathVariable Long id) {
+        patientRepository.deleteById(id);
+    }
 
-}}
+}
 
