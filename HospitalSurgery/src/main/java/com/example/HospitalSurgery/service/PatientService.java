@@ -11,7 +11,7 @@ import java.util.List;
 public class PatientService {
 
     @Autowired
-    private static PatientRepository patientRepository;
+    public static PatientRepository patientRepository;
 
     public static List<Patient> getAll(){
         return patientRepository.findAll();
